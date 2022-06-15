@@ -1,5 +1,10 @@
+import config from "../config";
+
 const usernameRegex: RegExp = /(<@[A-Z0-9]{2,}>)/g;
 
+const {
+    bot_name
+} = config.slack;
 /**
  * @param { string } text from slack message
  * @returns array<string>, only unique values
@@ -31,6 +36,9 @@ function parseMessage(msg, emojis) {
     // Array with "allowed" emojis mentioned in slackmessage
     const emojiHits = [];
 
+    //ignore bot messages
+    if(msg.user === bot_name) return false;
+    
     // Get usernames from slack message
     const users: string[] = parseUsernames(msg.text);
     if (!users.length) return false;
