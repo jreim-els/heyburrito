@@ -103,7 +103,7 @@ const config = {
             dailyCap: getNum(process.env.SLACK_DAILY_CAP, 5000),
             dailyDecCap: getNum(process.env.SLACK_DAILY_DEC_CAP, 5000),
             enableDecrement: getBool(process.env.ENABLE_DECREMENT, true),
-            broadcastNotificationChannelName: getString(process.env.BROADCAST_NOTIFICATION_CHANNEL_NAME, undefined),
+            broadcastNotificationChannelName: getString(process.env.BROADCAST_NOTIFICATION_CHANNEL_NAME, ""),
         },
         http: {
             http_port: getNum(process.env.HTTP_PORT, 3333),

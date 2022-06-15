@@ -38,7 +38,7 @@ function parseMessage(msg, emojis) {
 
     //ignore bot messages
     if(msg.user === bot_name) return false;
-    
+
     // Get usernames from slack message
     const users: string[] = parseUsernames(msg.text);
     if (!users.length) return false;

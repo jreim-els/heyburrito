@@ -97,8 +97,8 @@ const start = () => {
                     const { giver, updates } = result;
                     if (updates.length) {
                         await handleBurritos(giver, updates);
-                        notifyUser(event.channel, event.text);
-                        if(broadcastNotificationChannelName){
+                        notifyUser(event.channel, `${giver} gave out burritos! Because... \n${event.text}`);
+                        if(broadcastNotificationChannelName !== ""){
                             notifyUser(broadcastNotificationChannelName, event.text);
                         }
                     }
