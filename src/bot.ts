@@ -13,6 +13,7 @@ const {
     emojiInc,
     emojiDec,
     disableEmojiDec,
+    broadcastNotificationChannelName
 } = config.slack;
 
 interface Emojis {
@@ -96,6 +97,8 @@ const start = () => {
                     const { giver, updates } = result;
                     if (updates.length) {
                         await handleBurritos(giver, updates);
+                        notifyUser(broadcastNotificationChannelName, event.text);
+
                     }
                 }
             }

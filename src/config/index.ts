@@ -21,6 +21,11 @@ export function fixEmoji(input) {
     return inputFix;
 }
 
+export function getString(inputKey: string, defaultValue: string) {
+    if (!inputKey) return defaultValue;
+    return inputKey;
+};
+
 export function getBool(inputKey: string, defaultValue: boolean) {
     if (!inputKey) return defaultValue;
     const key = inputKey.toLowerCase();
@@ -55,6 +60,7 @@ const config = {
             dailyCap: getNum(process.env.SLACK_DAILY_CAP, 5),
             dailyDecCap: getNum(process.env.SLACK_DAILY_DEC_CAP, 5),
             enableDecrement: getBool(process.env.ENABLE_DECREMENT, true),
+            broadcastNotificationChannelName: getString(process.env.BROADCAST_NOTIFICATION_CHANNEL_NAME, undefined),
         },
         http: {
             http_port: process.env.PORT || process.env.HTTP_PORT || 3333,
@@ -97,6 +103,7 @@ const config = {
             dailyCap: getNum(process.env.SLACK_DAILY_CAP, 5000),
             dailyDecCap: getNum(process.env.SLACK_DAILY_DEC_CAP, 5000),
             enableDecrement: getBool(process.env.ENABLE_DECREMENT, true),
+            broadcastNotificationChannelName: getString(process.env.BROADCAST_NOTIFICATION_CHANNEL_NAME, undefined),
         },
         http: {
             http_port: getNum(process.env.HTTP_PORT, 3333),
@@ -138,6 +145,7 @@ const config = {
             dailyCap: getNum(process.env.SLACK_DAILY_CAP, 5000),
             dailyDecCap: getNum(process.env.SLACK_DAILY_DEC_CAP, 5000),
             enableDecrement: getBool(process.env.ENABLE_DECREMENT, true),
+            broadcastNotificationChannelName: getString(process.env.BROADCAST_NOTIFICATION_CHANNEL_NAME, undefined),
         },
         http: {
             http_port: process.env.HTTP_PORT || 3333,
