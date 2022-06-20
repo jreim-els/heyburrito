@@ -34,6 +34,12 @@ class LocalStore {
         return this.storedUsers;
     }
 
+    getSlackUserById(idParam) {
+        const data = this.storedUsers.filter(user => user?.id === idParam );
+        if(data.length === 0) return {id:idParam,name:idParam}
+        return data[0];
+    }
+
     botUserID() {
         return this.botId;
     }

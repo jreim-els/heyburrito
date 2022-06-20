@@ -1,7 +1,7 @@
 import config from './config';
 import BurritoStore from './store/BurritoStore';
 import LocalStore from './store/LocalStore';
-import { parseMessage } from './lib/parseMessage';
+import {parseMessage, parseUsernames} from './lib/parseMessage';
 import { validBotMention, validMessage } from './lib/validator';
 import Rtm from './slack/Rtm';
 import Wbc from './slack/Wbc';
@@ -97,7 +97,7 @@ const start = () => {
                     const { giver, updates } = result;
                     if (updates.length) {
                         await handleBurritos(giver, updates);
-                        notifyUser(event.channel, `${giver} gave out burritos! Because... \n${event.text}`);
+                        notifyUser(event.channel, `${LocalStore.getSlackUserById(giver)} gave out burritos to ${parseUsernames(event.text).join(',')}! Because... \n${event.text}`);
                         if(broadcastNotificationChannelName !== ""){
                             notifyUser(broadcastNotificationChannelName, event.text);
                         }
