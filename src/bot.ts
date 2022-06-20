@@ -97,7 +97,10 @@ const start = () => {
                     const { giver, updates } = result;
                     if (updates.length) {
                         await handleBurritos(giver, updates);
-                        notifyUser(event.channel, `${LocalStore.getSlackUserById(giver)} gave out burritos to ${parseUsernames(event.text).join(',')}! Because... \n${event.text}`);
+                        let userNames:string[] = [];
+                        parseUsernames(event.text).forEach(userId => userNames.push(LocalStore.getSlackUserById(userId).name));
+
+                        notifyUser(event.channel, `${LocalStore.getSlackUserById(giver).name} gave out burritos to ${userNames.join(',')}! Because... \n${event.text}`);
                         if(broadcastNotificationChannelName !== ""){
                             notifyUser(broadcastNotificationChannelName, event.text);
                         }
