@@ -73,6 +73,8 @@ const _getUserScoreBoard = async ({ ...args }) => {
             _id: u,
             scoreinc: scoreinc.length,
             scoredec: scoredec.length,
+            scoreincOverdrawn: '',
+            scoredecOverdrawn: ''
         });
     });
     return score;
